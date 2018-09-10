@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.views.static import serve
 from django.conf import settings
+from djano.views.generic import TemplateView
 
 from django.urls import include, path
 
@@ -27,6 +28,7 @@ from django.urls import include, path
 urlpatterns = [
     path('api/', include('Gallery.endpoints')),
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='index.html'))
 ]
 
 if settings.DEBUG:

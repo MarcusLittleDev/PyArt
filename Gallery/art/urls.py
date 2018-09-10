@@ -4,7 +4,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('profile', views.UserProfileViewSet)
+router.register('art', views.ArtViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls))

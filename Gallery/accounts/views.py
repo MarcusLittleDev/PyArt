@@ -11,7 +11,7 @@ from knox.models import AuthToken
 from knox.auth import TokenAuthentication
 from knox.views import LoginView as KnoxLoginView
 
-from . import models, serializers
+from . import models, serializers, permissions
 
 # Create your views here.
 
@@ -21,6 +21,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.CreateUserProfileSerializer
     queryset = models.UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.UpdateOwnProfile,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('username', 'email')
 
@@ -32,6 +33,8 @@ class UserProfileViewSet(viewsets.ModelViewSet):
             "user": serializers.UserSerializer(user, context=self.get_serializer_context()).data,
             "token": AuthToken.objects.create(user)
         })
+
+
 
 
 class LoginView(generics.CreateAPIView):

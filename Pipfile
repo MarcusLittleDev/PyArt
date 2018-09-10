@@ -9,6 +9,7 @@ django-lint = "*"
 djangorestframework = "*"
 pylint = "*"
 django-rest-knox = "*"
+pillow = "*"
 
 [dev-packages]
 

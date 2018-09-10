@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-
+import ButtonAppBar from '../components/Layout'
 
 class Gallery extends Component {
     render()  {
         return (
             <React.Fragment>
-                <h1></h1>
+                <ButtonAppBar></ButtonAppBar>
             </React.Fragment>
         )
     }

@@ -1,0 +1,12 @@
+certifi==2018.8.24
+colorama==0.3.9
+Django==2.1.1
+django-bootstrap4==0.0.7
+django-lint==2.0.4
+logilab-astng==0.24.3
+logilab-common==1.4.2
+Pillow==5.2.0
+pylint==0.28.0
+pytz==2018.5
+six==1.11.0
+wincertstore==0.2

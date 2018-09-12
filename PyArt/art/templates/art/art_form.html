@@ -1,0 +1,11 @@
+{%extends 'art/art_base.html'%}
+{%load bootstrap4%}
+
+{%block art_content%}
+<h4>Upload your Art</h4>
+<form id='artForm' action="{%url 'art:create'%}" method='post' enctype="multipart/form-data">
+    {%csrf_token%}
+    {%bootstrap_form form%}
+    <input type="submit" value="Post" class='btn btn-primary btn-large'>
+</form>
+{%endblock%}

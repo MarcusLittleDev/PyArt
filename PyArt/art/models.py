@@ -12,7 +12,7 @@ class Art(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0.01)])
     out_of_stock = models.BooleanField(default=False)
     picture = models.ImageField(upload_to="art/", blank=False)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, max_length=255)
 
     def __str__(self):
         return self.name

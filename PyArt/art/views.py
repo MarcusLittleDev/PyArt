@@ -22,3 +22,4 @@ class ArtDetail(generic.DetailView):
 
 class ArtList(generic.ListView):
     model = models.Art
+    context_object_name = 'art'

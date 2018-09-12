@@ -1,0 +1,8 @@
+{% load imagekit %}
+
+<div class='art'>
+    <h3 class="art_name">{{art.name}}</h3>
+    {% thumbnail '500x300' art.picture -- class="img-fluid rounded" alt=art.name id=art.slug%}
+    <p class="art_description">{{art.description}}</p>
+    <p class = "art_price">{{art.price}}</p>
+</div>

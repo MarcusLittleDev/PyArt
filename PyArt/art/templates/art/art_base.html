@@ -1,11 +1,16 @@
 {%extends 'base.html'%}
-{%block extra_head%}{%endblock%}
+{%load staticfiles%}
+{%block extra_head%}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'art/css/master.css'%}" />
+{%endblock%}
 {%block content%}
 <div class="gallery-page">
     <div class="container">
-        {%block preart%}{%endblock%}
-        {%block art_content%}{%endblock%}
-        {%block postart%}{%endblock%}
+        <div class="row">
+            {%block preart%}{%endblock%}
+            {%block art_content%}{%endblock%}
+            {%block postart%}{%endblock%}
+        </div>
     </div>
 </div>
 {%endblock%}

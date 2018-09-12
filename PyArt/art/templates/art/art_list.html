@@ -1,5 +1,25 @@
 {%extends 'art/art_base.html'%}
-
+{% load imagekit %}
 {%block art_content%}
+<div class="container">
+    {% if art%}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Gallery</h1>
+        </div>
+    
+        {%for photo in art%}
+            <div class="col-lg-3 col-md-4 col-xs-12">
+                <a href="{%url 'art:detail' slug=photo.slug%}">
+                    {% thumbnail '300x150' photo.picture -- class="img-fluid img-thumbnail" alt=photo.name id=photo.slug%}
+                </a>
+                <p class="art_price">${{photo.price}}</p>
+            </div>
 
+        {%endfor%}
+    </div>
+    {%else%}
+        <h2>There is no Art here. Upload to fill your Gallery!</h2>
+    {%endif%}
+</div>
 {%endblock%}

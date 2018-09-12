@@ -1,0 +1,10 @@
+.img-fluid {
+    display:block;
+    margin:auto;
+}
+
+.art_name, 
+.art_price, 
+.art_description {
+    text-align: center;
+}

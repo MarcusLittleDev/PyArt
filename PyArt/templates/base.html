@@ -29,7 +29,7 @@
                     <li class="nav-item"><a class="nav-link" href='{%url "art:create"%}'>Upload</a></li>
                     {%endif%}
                     <li class="nav-item"><a class="nav-link" href='{% url "accounts:logout" %}'>Log Out</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">{{user.username}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' username=user.get_username %}">{{user.get_username}}</a></li>
                     {%else%}
                     <li class="nav-item"><a class="nav-link" href='{%url "accounts:login"%}'>Log In</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>

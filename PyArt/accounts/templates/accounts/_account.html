@@ -1,0 +1,20 @@
+{%load bootstrap4%}
+
+<div class = "account">
+    <div class="container">
+        <div class="row">
+            <div class = "col-4-xs">
+
+            </div>
+            <div class = "col-8-xs">
+                    <form method="POST">
+                            {%csrf_token%}
+                            {%bootstrap_form form%}
+                            <button class='btn btn-warning' type='button' onclick="Update()">Update Info</button>
+                            <input type="submit" class='btn btn-default' value='Submit' id="confirm_update"> 
+                        </form>
+            </div>
+        </div>
+    </div>
+</div>
+

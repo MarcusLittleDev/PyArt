@@ -1,0 +1,19 @@
+{%extends "base.html"%} 
+{% load staticfiles%}
+
+{% block extra_head %}
+<script src="{% static 'accounts/js/update_profile.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+<div class = "accounts_page">
+    <div class = "container">
+        <div class = "row">
+            {% block preaccounts %}{% endblock %}
+            {% block accounts_content %}{% endblock %}
+            {% block postaccounts %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "accounts/accounts_base.html" %}
+
+{% block accounts_content %}
+<div class = "col-md-12">
+{% include "accounts/_account.html" %}
+</div>
+{% endblock %}
+
+{% block postaccounts %}
+<script>
+    $(document).ready(function (){
+    function toggle() {
+        console.log('im loaded')
+    }
+    
+});
+</script>
+{% endblock %}

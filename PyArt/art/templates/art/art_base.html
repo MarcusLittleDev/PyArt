@@ -2,13 +2,19 @@
 {%load staticfiles%}
 {%block extra_head%}
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'art/css/master.css'%}" />
+{%block head%}
+{%endblock%}
 {%endblock%}
 {%block content%}
 <div class="gallery-page">
     <div class="container">
         <div class="row">
             {%block preart%}{%endblock%}
+        </div>
+        <div class="row">
             {%block art_content%}{%endblock%}
+        </div>
+        <div class="row">
             {%block postart%}{%endblock%}
         </div>
     </div>

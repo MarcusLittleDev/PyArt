@@ -1,5 +1,10 @@
 {%extends 'art/art_base.html'%}
 {% load imagekit %}
+{%load staticfiles%}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'art/css/art_list.css'%}" />
+{% endblock %}
 {%block art_content%}
 <div class="container">
     {% if art%}
@@ -11,7 +16,7 @@
         {%for photo in art%}
             <div class="col-lg-3 col-md-4 col-xs-12">
                 <a href="{%url 'art:detail' slug=photo.slug%}">
-                    {% thumbnail '300x150' photo.picture -- class="img-fluid img-thumbnail" alt=photo.name id=photo.slug%}
+                    {% thumbnail '300x150' photo.picture -- class="img-fluid img-thumbnail hover-img" alt=photo.name id=photo.slug%}
                 </a>
                 <p class="art_price">${{photo.price}}</p>
             </div>

@@ -10,7 +10,7 @@ User = get_user_model()
 
 class UploadArt(LoginRequiredMixin, generic.CreateView):
     model = models.Art
-    fields = ('name', 'description', 'price', 'out_of_stock', 'picture')
+    fields = ('name', 'description', 'picture')
 
     def form_valid(self, form):
         self.object= form.save(commit=False)

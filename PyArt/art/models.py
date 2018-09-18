@@ -26,8 +26,8 @@ class Art(models.Model):
     def get_absolute_url(self):
         return reverse('art:detail', kwargs={'slug':self.slug})
 
-class Request(models.model):
-    user = models.ForeignKey(User, related_name='requesting_user' on_delete=models.CASCADE)
+class Request(models.Model):
+    user = models.ForeignKey(User, related_name='requesting_user', on_delete=models.CASCADE)
     art = models.ForeignKey(Art, related_name='requested_art', on_delete=models.CASCADE)
     message = models.TextField(blank=True, default='')
 

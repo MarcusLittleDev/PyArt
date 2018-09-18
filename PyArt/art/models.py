@@ -13,6 +13,7 @@ class Art(models.Model):
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, max_length=255)
     requests = models.ManyToManyField(User, through='Request')
+    taking_request = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

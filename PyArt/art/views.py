@@ -10,10 +10,11 @@ User = get_user_model()
 
 class UploadArt(LoginRequiredMixin, generic.CreateView):
     model = models.Art
-    fields = ('name', 'description', 'picture')
+    form_class = forms.ArtUploadForm
 
     def form_valid(self, form):
         self.object= form.save(commit=False)
+        self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
 

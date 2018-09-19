@@ -16,7 +16,7 @@
         {%for photo in art%}
             <div class="col-lg-3 col-md-4 col-xs-12">
                 <a href="{%url 'art:detail' slug=photo.slug%}">
-                    {% thumbnail '300x150' photo.picture -- class="img-fluid hover-img" alt=photo.name id=photo.slug%}
+                    <img class = 'img-fluid' src={{photo.art_thumbnail.url}}/>
                 </a>
                 <p class="art_price">${{photo.price}}</p>
             </div>

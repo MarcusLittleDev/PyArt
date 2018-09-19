@@ -3,6 +3,8 @@ from django.core.validators import MinValueValidator
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from imagekit.models import ImageSpecField, ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 User = get_user_model()
 # Create your models here.
@@ -12,9 +14,14 @@ class Art(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, max_length=255)
+    picture = models.ImageField(upload_to='media', default='/static/assets/placeholder.png')
+    art_thumbnail = ImageSpecField(source='picture', processors=[ResizeToFill(400, 250)],
+                                    format='JPEG',
+                                    options={'quality':85})
     requests = models.ManyToManyField(User, through='Request')
     taking_request = models.BooleanField(default=False)
 
+        
     def __str__(self):
         return self.name
     

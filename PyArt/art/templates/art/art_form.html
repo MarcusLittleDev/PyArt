@@ -6,6 +6,7 @@
 <form id='artForm' action="{%url 'art:create'%}" method='post' enctype="multipart/form-data">
     {%csrf_token%}
     {%bootstrap_form form%}
+    <input type='' name='pictures' multiple>
     <input type="submit" value="Post" class='btn btn-primary btn-large'>
 </form>
 {%endblock%}

@@ -3,8 +3,11 @@ from django.core.validators import MinValueValidator
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import ResizeToFill
+
+import uuid
 
 User = get_user_model()
 # Create your models here.
@@ -14,10 +17,6 @@ class Art(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, max_length=255)
-    picture = models.ImageField(upload_to='media', default='/static/assets/placeholder.png')
-    art_thumbnail = ImageSpecField(source='picture', processors=[ResizeToFill(400, 250)],
-                                    format='JPEG',
-                                    options={'quality':85})
     requests = models.ManyToManyField(User, through='Request')
     taking_request = models.BooleanField(default=False)
 
@@ -43,3 +42,14 @@ class Request(models.Model):
 
     class Meta:
         unique_together = ('user','art')
+
+
+def user_directory_path(instance, filename):
+    return f'images/user_{instance.art.user.id}/{uuid.uuid4().hex}.png'
+
+class Picture(models.Model):
+    art = models.ForeignKey(Art, related_name='art_picture', on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to=user_directory_path, default='/static/assets/placeholder.png')
+    art_thumbnail = ImageSpecField(source='picture', processors=[ResizeToFill(400, 250)],
+                                    format='JPEG',
+                                    options={'quality':85})

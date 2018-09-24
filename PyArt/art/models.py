@@ -14,7 +14,7 @@ class Art(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, max_length=255)
-    picture = models.ImageField(upload_to='media', default='/static/assets/placeholder.png')
+    picture = models.ImageField(upload_to='media')
     art_thumbnail = ImageSpecField(source='picture', processors=[ResizeToFill(400, 250)],
                                     format='JPEG',
                                     options={'quality':85})

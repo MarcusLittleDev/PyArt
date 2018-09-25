@@ -5,6 +5,6 @@ app_name = 'art'
 
 urlpatterns = [
     path('', views.ArtList.as_view(), name='gallery'),
-    path('upload/', views.UploadArt.as_view(), name='upload'),
+    path('upload/', views.ArtCreate, name='upload'),
     path('<slug:slug>/', views.ArtDetail.as_view(), name='detail')
 ]

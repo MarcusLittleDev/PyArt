@@ -17,8 +17,7 @@ class Art(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, max_length=255)
-    requests = models.ManyToManyField(User, through='Request')
-    taking_request = models.BooleanField(default=False)
+    taking_request = models.BooleanField(blank=True, default=False)
 
         
     def __str__(self):
@@ -26,7 +25,7 @@ class Art(models.Model):
     
     def save(self, *args, **kwargs):
         """creates slug and saves model"""
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.name + '_' + uuid.uuid4().hex)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -49,7 +48,10 @@ def user_directory_path(instance, filename):
 
 class Picture(models.Model):
     art = models.ForeignKey(Art, related_name='art_picture', on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to=user_directory_path, default='/static/assets/placeholder.png')
+    picture = models.ImageField(upload_to=user_directory_path)
     art_thumbnail = ImageSpecField(source='picture', processors=[ResizeToFill(400, 250)],
                                     format='JPEG',
                                     options={'quality':85})
+
+    def __str__(self):
+        return self.art.name

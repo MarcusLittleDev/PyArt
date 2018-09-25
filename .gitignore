@@ -122,3 +122,5 @@ pyart/.vscode/settings.json
 .env.production.local
 
 npm-debug.log*
+
+*.png

@@ -8,9 +8,9 @@ from . import models, forms
 
 User = get_user_model()
 
-class UploadArt(LoginRequiredMixin, generic.CreateView):
+class ArtCreate(LoginRequiredMixin, generic.CreateView):
     model = models.Art
-    form_class = forms.ArtUploadForm
+    form_class = forms.ArtForm
 
     def form_valid(self, form):
         self.object= form.save(commit=False)

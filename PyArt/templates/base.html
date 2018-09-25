@@ -20,34 +20,52 @@
 <body>
     <nav class='navbar navbar-expand-sm' role='navigation' id='navbar'>
         <div class='container'>
-            <a class='navbar-brand' href='/'>[Name PlaceHolder]</a>
+            <a {% if "home" == request.resolver_match.url_name %}class="navbar-brand active"{%else%} class='navbar-brand' {% endif %} href='/'>[Name PlaceHolder]</a>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class='navbar-nav ml-auto'>
-                    <li class="nav-item"><a class="nav-link" href='{%url "art:list"%}'>Gallery</a></li>
+                    <li class='nav-item'>
+                        <a {% if "gallery" in request.path and "upload"  != request.resolver_match.url_name %}class="nav-link active"{%else%} class="nav-link" {% endif %} class="nav-link" href='{%url "art:gallery"%}'>Gallery</a>
+                    </li>
                     {%if user.is_authenticated%}
                     {%if user.is_staff%}
-                    <li class="nav-item"><a class="nav-link" href='{%url "admin:index"%}'>Admin</a></li>
-                    <li class="nav-item"><a class="nav-link" href='{%url "art:create"%}'>Upload</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{%url "admin:index"%}'>Admin</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a {% if "upload" == request.resolver_match.url_name %}class="nav-link active"{%else%} class='nav-link' {% endif %} href='{%url "art:upload"%}'>Upload</a>
+                    </li>
                     {%endif%}
-                    <li class="nav-item"><a class="nav-link" href='{% url "accounts:logout" %}'>Log Out</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' username=user.get_username %}">{{user.get_username}}</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{% url "accounts:logout" %}'>Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a {% if "profile" == request.resolver_match.url_name %}class="nav-link active"{%else%} class='nav-link' {% endif %} href="{% url 'accounts:profile' username=user.get_username %}">{{user.get_username}}</a>
+                    </li>
                     {%else%}
-                    <li class="nav-item"><a class="nav-link" href='{%url "accounts:login"%}'>Log In</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                    <li class="nav-item">
+                        <a {% if "login" == request.resolver_match.url_name %}class="nav-link active"{%else%} class='nav-link' {% endif %} href='{%url "accounts:login"%}'>Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a {% if "signup" == request.resolver_match.url_name %}class="nav-link active"{%else%} class='nav-link' {% endif %} href="{% url 'accounts:signup' %}">Sign Up</a>
+                    </li>
                     {%endif%}
                 </ul>
             </div>
             
         </div>
     </nav>
+<<<<<<< HEAD
     <div class="container-fluid mycontent">
+=======
+    <div class="mycontent">
+>>>>>>> a29be7a1e73c359817127cb1b3295ceb5e0bd9b4
         {%block content%}
         {%endblock%}
     </div>
-    <div class= 'container container-fluid' id="no_javascript">
+    <div id="no_javascript">
         <p>Javascript needs to be enabled in order to view this website's content...</p>
     </div>
 </body>

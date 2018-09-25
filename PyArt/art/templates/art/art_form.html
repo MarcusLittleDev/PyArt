@@ -3,7 +3,7 @@
 
 {%block art_content%}
 <h4>Upload your Art</h4>
-<form id='artForm' action="{%url 'art:create'%}" method='post' enctype="multipart/form-data">
+<form id='artForm' action="{%url 'art:upload'%}" method='post' enctype="multipart/form-data">
     {%csrf_token%}
     {%bootstrap_form form%}
     <input type='' name='pictures' multiple>

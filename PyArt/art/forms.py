@@ -3,7 +3,6 @@ from . import models
 
 class ArtForm(forms.ModelForm):
     taking_request = forms.BooleanField(required=False, initial=False)
-    # taking_request.widget = forms.FileInput(attrs={'multiple':True})
     class Meta: 
         fields = ('name', 'description', 'taking_request')
         model = models.Art
